@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="hasShownOverlayPopupBefore" value="true"/>
+	<item key="replaceBarOpen" value="false"/>
+	<list key="searchhistory">
+		<item value="digits"/>
+		<item value="while(digits &lt; PASSWORD_DIGITS)"/>
+		<item value="DcMotor_Rotate(CLOCKWISE,100);"/>
+	</list>
+</section>

@@ -1,0 +1,36 @@
+17:12:02 **** Incremental Build of configuration Debug for project CONTROL_ECU ****
+make all 
+Building file: ../CONTROL_ECU.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"CONTROL_ECU.d" -MT"CONTROL_ECU.o" -c -o "CONTROL_ECU.o" "../CONTROL_ECU.c"
+In file included from ../CONTROL_ECU.c:15:
+c:/winavr-20100110/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../CONTROL_ECU.c
+ 
+Building target: CONTROL_ECU.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,CONTROL_ECU.map -mmcu=atmega32 -o "CONTROL_ECU.elf"  ./CONTROL_ECU.o ./buzzer.o ./dcmotor.o ./external_eeprom.o ./gpio.o ./pir_sensor.o ./pwm.o ./timer.o ./twi.o ./uart.o   
+Finished building target: CONTROL_ECU.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S CONTROL_ECU.elf  >"CONTROL_ECU.lss"
+Finished building: CONTROL_ECU.lss
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 CONTROL_ECU.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    9734 bytes (29.7% Full)
+(.text + .data + .bootloader)
+
+Data:         32 bytes (1.6% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+17:12:04 Build Finished. 0 errors, 1 warnings. (took 1s.402ms)
+

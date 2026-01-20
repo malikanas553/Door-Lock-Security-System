@@ -1,0 +1,53 @@
+/*
+ * main_MC1.c
+ *
+ *  Created on: Apr 8, 2025
+ *      Author: LightStore
+ */
+
+#include "lcd.h"
+#include "keypad.h"
+#include "interrupt.h"
+#include "std_types.h"
+#include <util/delay.h>
+#include "uart.h"
+
+#define MC2_READY 0xE0
+#define GET_STATUS 0xE1
+#define SET_NEW_PASS 0xE2
+
+
+UART_ConfigType UART_CONFIG = {EIGHT_BITS,NO_PARITY,ONE_STOP_BIT,9600};
+int main(void)
+{
+	uint8 key;
+	uint8 status;
+	uint8 password[5];
+	Enable_Global_Interrupt();
+	UART_init(&UART_CONFIG);
+	LCD_init();
+	while(received_key != MC2_READY);
+	UART_sendByte(GET_STATUS);
+	while(received_key == MC2_READY);
+	status = received_key;
+	while(1)
+	{
+
+        int digits = 0;
+		if(status != '#')
+		{
+			LCD_displayString("PLZ ENTER PASS: ");
+			while(digits < 5){
+			key = KEYPAD_getPressedKey();
+			if((key <= 9) && (key >= 0))
+			{
+              password[digits] = key;
+              digits++;
+              LCD_displayCharacter('*');
+			}
+			}
+			while(KEYPAD_getPressedKey() != ENTER);
+		}
+	}
+	return 0;
+}
